@@ -27,3 +27,11 @@ class UserLoginForm(AuthenticationForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'password'}))
 
     captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
+
+class UserUpdateForm(forms.ModelForm):
+    """ A form for updating user profile """
+    email = forms.EmailField()
+
+    class Meta:
+        model = get_user_model()
+        fields = ['first_name', 'last_name', 'email', 'description']
