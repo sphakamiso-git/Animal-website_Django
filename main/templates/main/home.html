@@ -16,6 +16,15 @@
                         <small class="text-muted">{{ object.published|date:'F d, Y'}}</small>
                     </div>
 
+                    <div>
+                        <a class="article-title line-clamp-2 title-style" style="font-size: 22px" href="/{{object.slug}}">
+                            {{ object.title }}
+                        </a>
+                        <a href="/{{object.slug}}" style="text-decoration: none;">
+                            <p class="article-content line-clamp-5 subtitle-style">{{ object.subtitle }}</p>
+                        </a>
+                    </div>
+
                     {% if object.author == user %}
                         <div style="float: right">
                             {% if type == "series" %}
@@ -27,14 +36,7 @@
                              {% endif %}                   
                     {% endif %}
 
-                    <div>
-                        <a class="article-title line-clamp-2 title-style" style="font-size: 22px" href="/{{object.slug}}">
-                            {{ object.title }}
-                        </a>
-                        <a href="/{{object.slug}}" style="text-decoration: none;">
-                            <p class="article-content line-clamp-5 subtitle-style">{{ object.subtitle }}</p>
-                        </a>
-                    </div>
+               
                 </div>
             </article>
         </div>
