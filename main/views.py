@@ -29,21 +29,68 @@ def new_series(request):
         if form.is_valid():
             form.save()
             return redirect('homepage')
-        else:
-            form = SeriesCreateForm()
+    else:
+        form = SeriesCreateForm()
     return render(request=request, template_name='main/new_record.html', context={'object': form})
 
+@user_is_superuser
 def new_post(request):
-    return redirect('/')
+    if request.method == "POST":
+        form = ArticleCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(f"{form.cleaned_data['series'].slug}/{form.cleaned_data.get('article_slug')}")
+    else:
+        form = ArticleCreateForm()
+    return render(request=request, template_name='main/new_record.html', context={'form': form})
 
 def series_update(request, series):
-    return redirect('/')
+    matching_series = ArticleSeries.objects.filter(slug=series).first()
 
+    if request.method == "POST":
+        form = SeriesUpdateForm(request.POST, request.FILES, instance=matching_series)
+        if form.is_valid():
+            form.save()
+            return redirect('homepage')
+    else:
+        form = SeriesUpdateForm(instance=matching_series)
+    return render(request=request, template_name="main/new_record.html", context={"object":"series", "form":form})
+
+@user_is_superuser
 def series_delete(request, series):
+    matching_series = ArticleSeries.objects.filter(slug=series).first()
+
+    if request.method == "POST":
+        matching_series.delete()
+        return redirect('/')
+    else:
+        return render(request=request, template_name='main/confirm_delete.html',context={"object":matching_series, "type":"series"})
+        
     return redirect('/')
 
+@user_is_superuser
 def article_update(request, series, article):
-    return redirect('/')
+    matching_article = Article.objects.filter(series__slug=series, article_slug=article).first()
 
+    if request.method == "POST":
+        form = ArticleUpdateForm(request.POST, request.FILES, instance=matching_article)
+        if form.is_valid():
+            form.save()
+            return redirect(f"/{matching_article.slug}")
+        
+    else:
+        form = ArticleUpdateForm(instance= matching_article)
+    return render(request=request, template_name="main/new_record.html", context={"object":"Article", "form":form})
+
+@user_is_superuser
 def article_delete(request, series, article):
-    return redirect('/')
+    matching_artitle = Article.objects.filter(series__slug=series, article_slug=article).first()
+
+    if request.method == "POST":
+        matching_artitle.delete()
+        return redirect('/')
+    else:
+
+        return render(request=request, template_name="main/confirm_delete.html", context={"object":matching_artitle, "type":"article"})
+    
+

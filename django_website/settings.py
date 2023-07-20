@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap4',
     'captcha',
+    'six',
     
     
 ]
@@ -173,3 +174,14 @@ TINYMCE_DEFAULT_CONFIG = {
     "height": "600px",
     'image_caption': True,
 }
+
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOSTING = 'smtp.gmail.com'
+EMAIL_FROM = 'sparngobese@gmail.com'
+EMAIL_HOST_USER = 'sparngobese@gmail.com'
+EMAIL_HOST_PASSWORD = 'wgqmojqkuvuepzzm'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+PASSWORD_RESET_TIMEOUT = 14400
