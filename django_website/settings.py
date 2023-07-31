@@ -173,12 +173,14 @@ TINYMCE_DEFAULT_CONFIG = {
     'width': 'auto',
     "height": "600px",
     'image_caption': True,
+    'images_upload_url':'upload_image',
 }
 
 # Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOSTING = 'smtp.gmail.com'
-EMAIL_FROM = 'sparngobese@gmail.com'
+#EMAIL_FROM = 'sparngobese@gmail.com'
+EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = 'sparngobese@gmail.com'
 EMAIL_HOST_PASSWORD = 'wgqmojqkuvuepzzm'
 EMAIL_PORT = 587
