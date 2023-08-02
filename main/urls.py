@@ -20,6 +20,7 @@ urlpatterns = [
     path('<series>/<article>/update',views.article_update, name='article_update'),
     path('<series>/<article>/delete', views.article_delete, name='article_delete'),
     path('<series>/<article>/upload_image', views.upload_image, name='upload_image'),
+    
 
 ]
 
