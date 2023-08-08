@@ -24,3 +24,5 @@ The Website covers all the basic functionalities a website should have, but you 
 - BootStrap
 
   [Back to the top](#animal-website_Django)
+
+  ## How to Use
