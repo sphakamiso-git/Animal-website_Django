@@ -10,6 +10,7 @@ from users.views import register
     path('logout', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout')
 ]"""
 urlpatterns = [
+    path('newsletter', views.newsletter, name='newsletter'),
     path('', views.homepage, name='homepage'),
     path('new_series', views.new_series, name='series-create'),
     path('new_post', views.new_post, name='post-create'),
@@ -20,7 +21,7 @@ urlpatterns = [
     path('<series>/<article>/update',views.article_update, name='article_update'),
     path('<series>/<article>/delete', views.article_delete, name='article_delete'),
     path('<series>/<article>/upload_image', views.upload_image, name='upload_image'),
-    
+
 
 ]
 

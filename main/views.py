@@ -3,12 +3,17 @@ from django.http import HttpResponse
 from .models import Article, ArticleSeries
 
 from users.decorators import user_is_superuser
-from .forms import SeriesCreateForm, ArticleCreateForm, SeriesUpdateForm, ArticleUpdateForm
+from .forms import SeriesCreateForm, ArticleCreateForm, SeriesUpdateForm, ArticleUpdateForm, NewsletterForm
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from django.http import JsonResponse
 import os
 from uuid import uuid4
+from users.models import SubscribedUsers
+
+from django.contrib import messages
+from django.core.mail import EmailMessage
+
 
 
 def homepage(request):
@@ -129,3 +134,30 @@ def upload_image(request, series: str=None, article: str=None):
             'message': 'Image uploaded successfully',
             'location': os.path.join(settings.MEDIA_URL, 'ArticleSeries', matching_article.slug, file_obj.name)
         })
+    
+@user_is_superuser
+def newsletter(request):
+    if request.method == "POST":
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data.get('subject')
+            receivers = form.cleaned_data.get('receivers').split(',')
+            email_message = form.cleaned_data.get('message')
+
+            mail = EmailMessage(subject, email_message, f'PyLessons <{request.user.email}>', bcc=receivers)
+            mail.content_subtype = 'html'
+
+            if mail.send():
+                messages.success(request, 'Email sent successfully')
+            else:
+                messages.error(request, "There was an error sending email")
+        else:
+            for error in list(form.errors.values()):
+                messages.error(request, error)
+        
+        return redirect('/')
+
+    form = NewsletterForm()
+    form.fields['receivers'].initial = ','.join([active.email for active in SubscribedUsers.objects.all()])
+    return render(request=request, template_name='main/newsletter.html', context={'form':form})
+    
