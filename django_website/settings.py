@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -151,8 +153,8 @@ MEDIA_URL = '/media/'
 
 AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend','django.contrib.auth.backends.ModelBackend']
 
-RECAPTCHA_PUBLIC_KEY = '6LfaZOwmAAAAACUceHyk3ohfBcqrBqG_bGqpxhyk'
-RECAPTCHA_PRIVATE_KEY = '6LfaZOwmAAAAALoOpK6Nr0Bi0KVe5f-_ZJpK4j9L'
+RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 TINYMCE_DEFAULT_CONFIG = {
@@ -179,10 +181,10 @@ TINYMCE_DEFAULT_CONFIG = {
 # Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOSTING = 'smtp.gmail.com'
-#EMAIL_FROM = 'sparngobese@gmail.com'
+
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = 'sparngobese@gmail.com'
-EMAIL_HOST_PASSWORD = 'wgqmojqkuvuepzzm'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
