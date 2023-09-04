@@ -213,3 +213,6 @@
   .footer-text a:hover {
     color:#ffffff;
   }
+  .navbar {
+    height:80px;
+  }
