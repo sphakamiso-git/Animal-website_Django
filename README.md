@@ -11,7 +11,7 @@ A simple django application by [Pylessons](https://pylessons.com/django-introduc
 - [Author Info](#author-info)
 
 ## Description
-The website contains django authentication systemm with email verification and forgot passwrd features.
+The website contains django authentication system with email verification and forgot password features.
 Admins are able to upload pictures and edit articles using a package called TinyMce.
 The Website covers all the basic functionalities a website should have, but you can always extend and add more to the website.
 
@@ -36,7 +36,7 @@ The Website covers all the basic functionalities a website should have, but you 
   ## Licences
 
   ## Author Info
-  -
+  - Rokas Liuberskis
   -
 
   [Back to the top](#animal-website_Django)
