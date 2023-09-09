@@ -5,10 +5,10 @@ A simple django application by [Pylessons](https://pylessons.com/django-introduc
 #
 ##  Table of Contents
 - [Description](#description)
-- [How to Use]()
-- [References]()
-- [License]()
-- [Author Info]()
+- [How to Use](#how-to-use)
+- [References](#references)
+- [License](#licences)
+- [Author Info](#author-info)
 
 ## Description
 The website contains django authentication systemm with email verification and forgot passwrd features.
