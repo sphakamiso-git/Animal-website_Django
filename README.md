@@ -26,3 +26,17 @@ The Website covers all the basic functionalities a website should have, but you 
   [Back to the top](#animal-website_Django)
 
   ## How to Use
+
+  ### Installation
+  **Run** pip install -r requirements
+
+  ### References
+  This site was built following the [Pylessons](Pylessons.com) tutorials
+
+  ## Licences
+
+  ## Author Info
+  -
+  -
+
+  [Back to the top](#animal-website Django)
