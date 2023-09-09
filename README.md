@@ -31,7 +31,7 @@ The Website covers all the basic functionalities a website should have, but you 
   **Run** pip install -r requirements
 
   ### References
-  This site was built following the [Pylessons](Pylessons.com) tutorials
+  This site was built following the ([Pylessons.com](https://pylessons.com/)) tutorials
 
   ## Licences
 
