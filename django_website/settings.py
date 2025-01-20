@@ -153,8 +153,8 @@ MEDIA_URL = '/media/'
 
 AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend','django.contrib.auth.backends.ModelBackend']
 
-RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY')
-RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')
+RECAPTCHA_PUBLIC_KEY = "os.getenv('RECAPTCHA_PUBLIC_KEY')"
+RECAPTCHA_PRIVATE_KEY = ".getenv('RECAPTCHA_PRIVATE_KEY')"
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 TINYMCE_DEFAULT_CONFIG = {
